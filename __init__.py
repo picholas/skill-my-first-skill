@@ -11,6 +11,11 @@ class MyFirstSkill( MycroftSkill ):
         super( MyFirstSkill, self ).__init__( name="MyFirstSkill" )
         LOGGER.info( "__init__" )
 
+    @intent_handler( IntentBuilder( "" ).require( "high.ground" ) )
+    def handle_high_ground_intent( self, message ):
+        LOGGER.info( "high ground" )
+        self.speak_dialog( "high.ground", data={} )
+
     @intent_handler( IntentBuilder( "" ).require( "RocketmanKeyword" ) )
     def handle_rocketman_intent( self, message ):
         LOGGER.info( "rocketman" )
